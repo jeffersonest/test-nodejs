@@ -64,4 +64,4 @@ container.registerSingleton<Routes>("Routes", Routes);
 container.registerSingleton<App>("App", App);
 container.registerSingleton<Validator>("Validator", Validator);
 
-export default {};
+export default container;

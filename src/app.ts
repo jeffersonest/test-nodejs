@@ -5,7 +5,7 @@ import Routes from "./infrastructure/interface/routes";
 
 @injectable()
 class App {
-  private readonly app: Express.Application;
+  public readonly app: Express.Application;
 
   constructor(@inject("Routes") private router: Routes) {
     this.app = Express();
