@@ -50,8 +50,19 @@ describe('Product API', () => {
 
   describe('PUT /product/:sku', () => {
     it('should update a product', async () => {
-      const sku = 12345;
-      const productData = { /* dados atualizados do produto */};
+      const sku = 43264;
+       const productData = {
+        name: "Produto Exemplo Atualizado",
+        inventory: {
+          warehouses: [
+            {
+              locality: "SP",
+              quantity: 12,
+              type: "ECOMMERCE"
+            },
+          ]
+        }
+      };
       const response = await request(server.app)
         .put(`/product/${sku}`)
         .send(productData);
