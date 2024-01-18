@@ -9,20 +9,26 @@ class ProductRepository {
   async save(product: Product): Promise<Product> {
     const existingProduct = this.database.find((p) => p.sku === product.sku);
     if (existingProduct) {
-      throw new Error("Produto com este SKU já existe.");
+      throw new Error(`O SKU ${product.sku} já existe.`);
     }
     this.database.push(product);
     return product;
   }
 
-  async update(sku: number, updatedProduct: Product): Promise<Product> {
-    const productIndex = this.database.findIndex((p) => p.sku === sku);
-    if (productIndex === -1) {
-      throw new Error("Produto não encontrado.");
-    }
-    this.database[productIndex] = updatedProduct;
-    return updatedProduct;
+async update(sku: number, updatedProduct: Product): Promise<Product> {
+  const productIndex = this.database.findIndex((p) => p.sku === sku);
+  if (productIndex === -1) {
+    throw new Error("Produto não encontrado.");
   }
+
+  const existingProduct = this.database[productIndex];
+  const mergedProduct = { ...existingProduct, ...updatedProduct };
+
+  this.database[productIndex] = mergedProduct;
+
+  return mergedProduct;
+}
+
 
   async delete(sku: number): Promise<void> {
     const productIndex = this.database.findIndex((p) => p.sku === sku);

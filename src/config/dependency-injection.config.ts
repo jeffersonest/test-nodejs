@@ -12,6 +12,7 @@ import UpdateProductUseCase from "../core/domain/use-cases/product/update-produc
 import DeleteProductAdapter from "../infrastructure/adapters/product/delete-product.adapter";
 import FindProductAdapter from "../infrastructure/adapters/product/find.product.adapter";
 import UpdateProductAdapter from "../infrastructure/adapters/product/update-product.adapter";
+import Validator from "../shared/validator";
 
 container.registerSingleton<FindProductUseCase>(
   "FindProductUseCase",
@@ -61,5 +62,6 @@ container.registerSingleton<ProductController>(
 container.registerSingleton<ProductRoutes>("ProductRoutes", ProductRoutes);
 container.registerSingleton<Routes>("Routes", Routes);
 container.registerSingleton<App>("App", App);
+container.registerSingleton<Validator>("Validator", Validator);
 
 export default {};

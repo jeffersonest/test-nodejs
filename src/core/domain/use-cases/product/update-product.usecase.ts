@@ -11,6 +11,7 @@ class UpdateProductUseCase implements UpdateProductPort {
   ) {}
 
   async update(sku: number, product: Product): Promise<Product> {
+    console.log("USECASE", product)
     return this.updateProductAdapter.update(sku, product);
   }
 }

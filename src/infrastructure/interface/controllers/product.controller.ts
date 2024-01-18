@@ -30,7 +30,9 @@ class ProductController {
   async updateProduct(req: Request, res: Response): Promise<Response> {
     try {
       const sku = parseInt(req.params.sku);
-      const product = req.body.product;
+      console.log("SKU", sku)
+      const product = req.body;
+      console.log("BODY", req.body)
       const updatedProduct = await this.updateProductUseCase.update(
         sku,
         product
