@@ -36,8 +36,6 @@ describe("Product API", () => {
         .post("/product")
         .send(productData);
 
-      console.log("RESPONSE \n \n \n ", response, "\n \n \n ");
-
       expect(response.statusCode).toBe(201);
       expect(response.body).toHaveProperty("sku");
     });
